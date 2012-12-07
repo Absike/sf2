@@ -13,7 +13,7 @@ class LoadJobData extends AbstractFixture implements OrderedFixtureInterface
   public function load(ObjectManager $em)
   {
     $job_sensio_labs = new Job();
-    $job_sensio_labs->setCategory($em->merge($this->getReference('category-programming')));
+    //$job_sensio_labs->setCategory($em->merge($this->getReference('category-programming')));
     $job_sensio_labs->setType('full-time');
     $job_sensio_labs->setCompany('Sensio Labs');
     $job_sensio_labs->setLogo('sensio-labs.gif');
