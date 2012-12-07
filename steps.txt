@@ -17,3 +17,5 @@ Do you want to generate the whole directory structure [no]? yes
 Do you confirm generation [yes]? yes
 Confirm automatic update of your Kernel [yes]? yes
 Confirm automatic update of the Routing [yes]? yes
+
+Stop in Day 7

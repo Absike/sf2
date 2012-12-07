@@ -20,13 +20,28 @@ class JobController extends Controller
      */
     public function indexAction()
     {
-            $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getEntityManager();
 
-        $entities = $em->getRepository('EnsJobeetBundle:Job')->findAll();
+        //$entities = $em->getRepository('EnsJobeetBundle:Job')->findAll();
+        /*
+        $entities = $em->getRepository('EnsJobeetBundle:Job')->getActiveJobs();
 
         return $this->render('EnsJobeetBundle:Job:index.html.twig', array(
             'entities' => $entities
-        ));
+        ));*/
+        
+        
+        
+        $categories = $em->getRepository('EnsJobeetBundle:Category')->getWithJobs();
+
+        foreach ($categories as $category) {
+            $category->setActiveJobs($em->getRepository('EnsJobeetBundle:Job')->getActiveJobs($category->getId(), $this->container->getParameter('max_jobs_on_homepage')));
+        }
+
+        return $this->render('EnsJobeetBundle:Job:index.html.twig', array(
+                    'categories' => $categories
+                ));
+        
     }
 
     /**

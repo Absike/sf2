@@ -45,22 +45,23 @@ class __TwigTemplate_b0f55d055f6655320d17b179453bab7d extends Twig_Template
     <div id=\"container\">
       <div id=\"header\">
         <div class=\"content\">
+     
           <h1><a href=\"";
-        // line 21
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("ens_job"), "html", null, true);
+        // line 22
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("EnsJobeetBundle_homepage"), "html", null, true);
         echo "\">
             <img src=\"";
-        // line 22
+        // line 23
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/ensjobeet/images/logo.jpg"), "html", null, true);
         echo "\" alt=\"Jobeet Job Board\" />
-          </a></h1>
+          </a></h1>      
  
           <div id=\"sub_header\">
             <div class=\"post\">
               <h2>Ask for people</h2>
               <div>
                 <a href=\"";
-        // line 29
+        // line 30
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("ens_job"), "html", null, true);
         echo "\">Post a Job</a>
               </div>
@@ -82,38 +83,38 @@ class __TwigTemplate_b0f55d055f6655320d17b179453bab7d extends Twig_Template
  
       <div id=\"content\">
         ";
-        // line 48
+        // line 49
         if ($this->getAttribute($this->getAttribute($this->getContext($context, "app"), "session"), "hasFlash", array(0 => "notice"), "method")) {
-            // line 49
+            // line 50
             echo "          <div class=\"flash_notice\">
             ";
-            // line 50
+            // line 51
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "app"), "session"), "flash", array(0 => "notice"), "method"), "html", null, true);
             echo "
           </div>
         ";
         }
-        // line 53
+        // line 54
         echo " 
         ";
-        // line 54
+        // line 55
         if ($this->getAttribute($this->getAttribute($this->getContext($context, "app"), "session"), "hasFlash", array(0 => "error"), "method")) {
-            // line 55
+            // line 56
             echo "          <div class=\"flash_error\">
             ";
-            // line 56
+            // line 57
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getContext($context, "app"), "session"), "flash", array(0 => "error"), "method"), "html", null, true);
             echo "
           </div>
         ";
         }
-        // line 59
+        // line 60
         echo " 
         <div class=\"content\">
             ";
-        // line 61
+        // line 62
         $this->displayBlock('content', $context, $blocks);
-        // line 63
+        // line 64
         echo "        </div>
       </div>
  
@@ -121,12 +122,12 @@ class __TwigTemplate_b0f55d055f6655320d17b179453bab7d extends Twig_Template
         <div class=\"content\">
           <span class=\"symfony\">
             <img src=\"";
-        // line 69
+        // line 70
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/ensjobeet/images/jobeet-mini.png"), "html", null, true);
         echo "\" />
             powered by <a href=\"http://www.symfony.com/\">
               <img src=\"";
-        // line 71
+        // line 72
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/ensjobeet/images/symfony.gif"), "html", null, true);
         echo "\" alt=\"symfony framework\" />
             </a>
@@ -169,10 +170,10 @@ class __TwigTemplate_b0f55d055f6655320d17b179453bab7d extends Twig_Template
         echo "    ";
     }
 
-    // line 61
+    // line 62
     public function block_content($context, array $blocks = array())
     {
-        // line 62
+        // line 63
         echo "            ";
     }
 
@@ -188,6 +189,6 @@ class __TwigTemplate_b0f55d055f6655320d17b179453bab7d extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  176 => 62,  173 => 61,  169 => 14,  166 => 13,  159 => 11,  156 => 10,  151 => 6,  148 => 5,  130 => 71,  125 => 69,  117 => 63,  115 => 61,  111 => 59,  105 => 56,  102 => 55,  100 => 54,  97 => 53,  91 => 50,  88 => 49,  86 => 48,  64 => 29,  54 => 22,  40 => 15,  35 => 10,  31 => 8,  23 => 1,  104 => 22,  87 => 19,  81 => 16,  77 => 15,  72 => 13,  67 => 12,  50 => 21,  46 => 9,  43 => 8,  37 => 13,  32 => 4,  29 => 5,);
+        return array (  177 => 63,  174 => 62,  170 => 14,  167 => 13,  160 => 11,  157 => 10,  152 => 6,  149 => 5,  131 => 72,  126 => 70,  118 => 64,  116 => 62,  112 => 60,  106 => 57,  103 => 56,  101 => 55,  98 => 54,  92 => 51,  89 => 50,  65 => 30,  55 => 23,  51 => 22,  40 => 15,  35 => 10,  31 => 8,  23 => 1,  104 => 22,  87 => 49,  81 => 16,  77 => 15,  72 => 13,  67 => 12,  50 => 11,  46 => 9,  43 => 8,  37 => 13,  32 => 4,  29 => 5,);
     }
 }
