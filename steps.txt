@@ -1,0 +1,19 @@
+Etape :
+- create the bundle
+- create your db
+- create your schema /BundleName/DataFixtures/ORM/LoadNameData.php
+- create entities /Entity
+- Install the DoctrineFixturesBundle with the composer Add some lines in composer.json and update your AppKarnel 
+- whene you DoctrineFixturesBundle is don , you loaded your data with php app/console doctrine:fixtures:load
+
+
+1- 
+
+Bundle namespace [Ens/JobeetBundle]: Ens/JobeetBundle
+Bundle name [EnsJobeetBundle]: EnsJobeetBundle
+Target directory [/home/dragos/work/jobeet/src]: /home/dragos/work/jobeet/src
+Configuration format (yml, xml, php, or annotation) [yml]: yml
+Do you want to generate the whole directory structure [no]? yes
+Do you confirm generation [yes]? yes
+Confirm automatic update of your Kernel [yes]? yes
+Confirm automatic update of the Routing [yes]? yes
