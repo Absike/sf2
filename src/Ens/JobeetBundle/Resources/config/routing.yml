@@ -5,4 +5,13 @@ EnsJobeetBundle_job:
  
 EnsJobeetBundle_homepage:
     pattern:  /
-    defaults: { _controller: EnsJobeetBundle:Default:index }
+    defaults: { _controller: EnsJobeetBundle:job:index }
+
+    
+EnsJobeetBundle_category:
+    pattern:  /category/{slug}
+    defaults: { _controller: EnsJobeetBundle:Category:show }
+    
+EnsJobeetBundle_category:
+    pattern: /category/{slug}/{page}
+    defaults: { _controller: EnsJobeetBundle:Category:show, page: 1 }
