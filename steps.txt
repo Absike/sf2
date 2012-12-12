@@ -18,4 +18,65 @@ Do you confirm generation [yes]? yes
 Confirm automatic update of your Kernel [yes]? yes
 Confirm automatic update of the Routing [yes]? yes
 
-Stop in Day 7
+
+----------------------
+
+git clone git://github.com/Absike/sf2.git
+cd jobeet
+# copy parameters template and edit as needed
+cp app/config/parameters.yml.dist app/config/parameters.yml
+cp app/config/phpcr_jackrabbit.yml.dist app/config/phpcr.yml
+
+
+---------------------------
+curl -s http://getcomposer.org/installer | php --
+php composer.phar install
+------------
+composer install
+---------------------------
+
+Permissions of the cache,logs directory
+
+> rm -rf app/cache/*
+> rm -rf app/logs/*
+
+---------------------------
+Exemple :
+php composer.phar require jackalope/jackalope-doctrine-dbal:dev-master
+---------------------------
+php app/console doctrine:database:create
+php app/console doctrine:schema:update --force
+php app/console doctrine:fixtures:load
+
+---------------------------
+
+php app/console cache:clear --env=prod
+php app/console cache:clear --env=dev
+
+------fixtures---------
+
+ "doctrine/doctrine-fixtures-bundle": "dev-master",
+ "doctrine/data-fixtures" : "dev-master",
+
+--FOSUserBundel--------
+
+   1-"friendsofsymfony/user-bundle": "*"
+   2- composer update
+   3- add new FOS\UserBundle\FOSUserBundle(), ----> in appKenel
+   4- update app/config/security.yml
+   5- update Loginbundle/ressources/config/routing.yml
+   6- create the entity user
+   7-
+       >php app/console router:debug
+       >php app/console doctrine:schema:update --force
+       >php app/console fos:user:create
+       >php app/console fos:user:promote
+
+   8- for more information 
+      https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/doc/index.md
+-----------------------
+
+
+
+
+

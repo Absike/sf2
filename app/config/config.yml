@@ -4,7 +4,7 @@ imports:
 
 framework:
     #esi:             ~
-    #translator:      { fallback: "%locale%" }
+    translator: ~
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -62,3 +62,9 @@ swiftmailer:
 parameters:
     max_jobs_on_homepage: 10
     max_jobs_on_category: 20
+    
+    
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: Ens\LoginBundle\Entity\User
