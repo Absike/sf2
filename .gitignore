@@ -1,22 +1,6 @@
-# Bootstrap
-app/bootstrap*
-
-# Symfony directories
-vendor/*
-*/logs/*
-*/cache/*
-web/uploads/*
-web/bundles/*
-
-# Configuration files
-
-app/config/parameters.yml
-composer.phar
-vendor/
-vendor/composer
-
-app/cache/*
-app/logs/*
-nbproject/
-/app/cache
-/vendor/composer
+/web/bundles/
+/app/bootstrap*
+/app/cache/*
+/app/logs/*
+/vendor/
+/app/config/parameters.yml

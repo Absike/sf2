@@ -18,7 +18,6 @@ Do you confirm generation [yes]? yes
 Confirm automatic update of your Kernel [yes]? yes
 Confirm automatic update of the Routing [yes]? yes
 
-
 ----------------------
 
 git clone git://github.com/Absike/sf2.git
@@ -27,12 +26,17 @@ cd jobeet
 cp app/config/parameters.yml.dist app/config/parameters.yml
 cp app/config/phpcr_jackrabbit.yml.dist app/config/phpcr.yml
 
-
 ---------------------------
 curl -s http://getcomposer.org/installer | php --
 php composer.phar install
 ------------
 composer install
+=======
+curl -s http://getcomposer.org/installer | php --
+
+---------------------------
+php composer.phar install
+
 ---------------------------
 
 Permissions of the cache,logs directory
@@ -51,6 +55,7 @@ php app/console doctrine:fixtures:load
 ---------------------------
 
 php app/console cache:clear --env=prod
+<<<<<<< HEAD
 php app/console cache:clear --env=dev
 
 ------fixtures---------
@@ -75,8 +80,6 @@ php app/console cache:clear --env=dev
    8- for more information 
       https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/doc/index.md
 -----------------------
-
-
 
 
 
