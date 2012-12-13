@@ -1,8 +1,39 @@
-{% extends "::base.html.twig" %}
-
-{% block body %}
-
-   {{ block('fos_user_content') }}
-
-{% endblock body %}
-
+<!DOCTYPE html>
+<html>
+    <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    </head>
+        <title>
+      {% block title %}
+        Login - jobeet
+      {% endblock %}
+    </title>
+    {% block stylesheets %}
+      <link rel="stylesheet" href="{{ asset('bundles/enslogin/css/reset.css') }}" type="text/css" media="all" />
+      <link rel="stylesheet" href="{{ asset('bundles/enslogin/css/styles.css') }}" type="text/css" media="all" />
+    {% endblock %}
+    <body>
+        {#
+        <div>
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                <a href="{{ path('fos_user_security_logout') }}">
+                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                </a>
+            {% else %}
+                <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+            {% endif %}
+        </div>
+        #}
+        {% for key, message in app.session.getFlashes() %}
+        <div class="{{ key }}">
+            {{ message|trans({}, 'FOSUserBundle') }}
+        </div>
+        {% endfor %}
+        <div id="container">
+            {% block fos_user_content %}
+            {% endblock fos_user_content %}
+       </div>
+    </body>
+</html>
