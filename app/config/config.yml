@@ -1,6 +1,7 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
+    - { resource: "@BlogBundle/Resources/config/config.yml" }
 
 framework:
     #esi:             ~
@@ -52,12 +53,11 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport: "%mailer_transport%"
-    host:      "%mailer_host%"
-    username:  "%mailer_user%"
-    password:  "%mailer_password%"
-    spool:     { type: memory }
-    
+    transport:  gmail
+    username:   papillon.pyxicom@gmail.com
+    password:   papillonpapillon
+    delivery_address: absike@gmail.com  # an email address where to send ALL emails (useful for dev parts) 
+    disable_delivery: false     # set to true to disable delivery completely
     
 parameters:
     max_jobs_on_homepage: 10
