@@ -9,7 +9,16 @@ use Ens\BlogBundle\Form\ContactType;
 class PageController extends Controller {
 
     public function indexAction() {
-        return $this->render('BlogBundle:Page:index.html.twig');
+        
+        //obtenir une instance du QueryBuilder à partir de EntityManager
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $blogs = $em->getRepository('BlogBundle:Blog')
+                    ->getLatestBlogs();
+
+        return $this->render('BlogBundle:Page:index.html.twig', array(
+            'blogs' => $blogs
+        ));
     }
 
     
@@ -25,8 +34,13 @@ class PageController extends Controller {
             throw $this->createNotFoundException('Unable to find Blog post.');
         }
 
+
+        $comments = $em->getRepository('BlogBundle:Comment')->getCommentsForBlog($blog->getId());
+
+
         return $this->render('BlogBundle:Page:show.html.twig', array(
                     'blog' => $blog,
+                    'comments' => $comments
                 ));
     }
     

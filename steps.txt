@@ -81,5 +81,21 @@ php app/console cache:clear --env=dev
       https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/doc/index.md
 -----------------------
 
+Install DoctrineMigrationsBundle
+
+            new Ens\BlogBundle\BlogBundle(),
+            new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
+
+>php composer.phar self-update
+You are using the latest composer version.
+
+>composer.phar create-project symfony/framework-standard-edition path/ 2.1.2
+
+php composer.phar create-project symfony/framework-standard-edition path/to/install
 
 
+php app/console doctrine:migrations:diff
+php app/console doctrine:migrations:migrate
+
+
+php app/console generate:doctrine:form BlogBundle:Comment

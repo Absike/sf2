@@ -1,13 +1,13 @@
 <?php
-// src/Blogger/BlogBundle/Entity/Blog.php
 
 namespace Ens\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Doctrine\Common\Collections\ArrayCollection;
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Ens\BlogBundle\Repository\BlogRepository")
  * @ORM\Table(name="blog")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Blog
 {
@@ -42,7 +42,10 @@ class Blog
      * @ORM\Column(type="text")
      */
     protected $tags;
-
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="blog")
+     */
     protected $comments = array();
 
     /**
@@ -141,9 +144,13 @@ class Blog
      *
      * @return string 
      */
-    public function getBlog()
+    public function getBlog($length = null)
     {
-        return $this->blog;
+        if (false === is_null($length) && $length > 0){
+          return substr($this->blog, 0, $length);  
+        }else{
+          return $this->blog;  
+        }   
     }
 
     /**
@@ -236,5 +243,36 @@ class Blog
     public function getUpdated()
     {
         return $this->updated;
+    }
+    
+    
+    public function __construct()
+    {
+        $this->setCreated(new \DateTime());
+        $this->setUpdated(new \DateTime());
+    }
+    
+    
+    /**
+     * @ORM\preUpdate
+     */
+    public function setUpdatedValue()
+    {
+       $this->setUpdated(new \DateTime());
+    }
+
+    /**
+     * Remove comments
+     *
+     * @param \Ens\BlogBundle\Entity\Comment $comments
+     */
+    public function removeComment(\Ens\BlogBundle\Entity\Comment $comments)
+    {
+        $this->comments->removeElement($comments);
+    }
+    
+    
+    public function __toString() {
+        return $this->getTitle();
     }
 }

@@ -1,0 +1,17 @@
+{#
+ Le template BloggerBlogBundle:Comment:index.html.twig que 
+ l’on inclut plus haut n’existe pas pour le moment et il faut le créer. 
+ Comme il s’agit simplement d’un template qui sera inclut dans un autre, 
+ pas besoin de créer une route ou un contrôleur
+#}
+
+{% for comment in comments %}
+    <article class="comment {{ cycle(['odd', 'even'], loop.index0) }}" id="comment-{{ comment.id }}">
+        <header>
+            <p><span class="highlight">{{ comment.user }}</span> commented <time datetime="{{ comment.created|date('c') }}">{{ comment.created|date('l, F j, Y') }}</time></p>
+        </header>
+        <p>{{ comment.comment }}</p>
+    </article>
+{% else %}
+    <p>There are no comments for this post. Be the first to comment...</p>
+{% endfor %}

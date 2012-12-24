@@ -13,4 +13,12 @@
             <p>{{ blog.blog }}</p>
         </div>
     </article>
+    <section class="comments" id="comments">
+        <section class="previous-comments">
+            <h3>Comments</h3>
+            {% include 'BlogBundle:Comment:index.html.twig' with { 'comments': comments } %}
+            {#render permet d’afficher le contenu d’un contrôleur dans un template#}
+            {% render 'BlogBundle:Comment:new' with { 'blog_id': blog.id } %}
+        </section>
+    </section>
 {% endblock %}

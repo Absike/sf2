@@ -24,6 +24,7 @@ class AppKernel extends Kernel
             new Ens\LoginBundle\EnsLoginBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Ens\BlogBundle\BlogBundle(),
+            new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

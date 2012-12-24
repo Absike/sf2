@@ -2,11 +2,12 @@
 
 namespace Ens\BlogBundle\DataFixtures\ORM;
 
-use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Common\DataFixtures\AbstractFixture;
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Ens\BlogBundle\Entity\Blog;
 
-class BlogFixtures implements FixtureInterface
+class BlogFixtures extends AbstractFixture implements OrderedFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
@@ -18,7 +19,7 @@ class BlogFixtures implements FixtureInterface
         $blog1->setTags('symfony2, php, paradise, symblog');
         $blog1->setCreated(new \DateTime());
         $blog1->setUpdated($blog1->getCreated());
-        $manager->persist($blog1);
+        
 
         $blog2 = new Blog();
         $blog2->setTitle('The pool on the roof must have a leak');
@@ -28,7 +29,7 @@ class BlogFixtures implements FixtureInterface
         $blog2->setTags('pool, leaky, hacked, movie, hacking, symblog');
         $blog2->setCreated(new \DateTime("2011-07-23 06:12:33"));
         $blog2->setUpdated($blog2->getCreated());
-        $manager->persist($blog2);
+        
 
         $blog3 = new Blog();
         $blog3->setTitle('Misdirection. What the eyes see and the ears hear, the mind believes');
@@ -38,7 +39,7 @@ class BlogFixtures implements FixtureInterface
         $blog3->setTags('misdirection, magic, movie, hacking, symblog');
         $blog3->setCreated(new \DateTime("2011-07-16 16:14:06"));
         $blog3->setUpdated($blog3->getCreated());
-        $manager->persist($blog3);
+        
 
         $blog4 = new Blog();
         $blog4->setTitle('The grid - A digital frontier');
@@ -48,7 +49,7 @@ class BlogFixtures implements FixtureInterface
         $blog4->setTags('grid, daftpunk, movie, symblog');
         $blog4->setCreated(new \DateTime("2011-06-02 18:54:12"));
         $blog4->setUpdated($blog4->getCreated());
-        $manager->persist($blog4);
+        
 
         $blog5 = new Blog();
         $blog5->setTitle('You\'re either a one or a zero. Alive or dead');
@@ -58,9 +59,29 @@ class BlogFixtures implements FixtureInterface
         $blog5->setTags('binary, one, zero, alive, dead, !trusting, movie, symblog');
         $blog5->setCreated(new \DateTime("2011-04-25 15:34:18"));
         $blog5->setUpdated($blog5->getCreated());
-        $manager->persist($blog5);
+        
 
+        
+        $manager->persist($blog1);
+        $manager->persist($blog2);
+        $manager->persist($blog3);
+        $manager->persist($blog4);
+        $manager->persist($blog5);
+        
+        
         $manager->flush();
+        
+        //Associate a reference for other fixtures
+        $this->addReference('blog-1', $blog1);
+        $this->addReference('blog-2', $blog2);
+        $this->addReference('blog-3', $blog3);
+        $this->addReference('blog-4', $blog4);
+        $this->addReference('blog-5', $blog5);
+    }
+    
+    public function getOrder()
+    {
+        return 1;
     }
 
 }
