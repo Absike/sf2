@@ -108,6 +108,9 @@ class Job
         return $this->id;
     }
 
+    public function getName() {
+        return 'job';
+    }
     /**
      * Set type
      *

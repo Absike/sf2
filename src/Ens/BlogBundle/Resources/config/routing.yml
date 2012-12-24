@@ -21,7 +21,7 @@ BlogBundle_contact:
         
         
 BlogBundle_show:
-    pattern:  /{id}
+    pattern:  /{id}/{slug}
     defaults: { _controller: BlogBundle:Page:show }
     requirements:
         _method:  GET

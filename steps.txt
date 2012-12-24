@@ -99,3 +99,8 @@ php app/console doctrine:migrations:migrate
 
 
 php app/console generate:doctrine:form BlogBundle:Comment
+
+------------------------------------------------
+Partie 5 : - Sidebar Latest Comments - tags
+           - Extensions Twig (le temps ou les commentaires ont été ajoutés)
+           - Slugification de l’URL

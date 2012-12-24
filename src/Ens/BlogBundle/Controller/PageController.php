@@ -9,21 +9,19 @@ use Ens\BlogBundle\Form\ContactType;
 class PageController extends Controller {
 
     public function indexAction() {
-        
+
         //obtenir une instance du QueryBuilder à partir de EntityManager
         $em = $this->getDoctrine()->getEntityManager();
 
         $blogs = $em->getRepository('BlogBundle:Blog')
-                    ->getLatestBlogs();
+                ->getLatestBlogs();
 
         return $this->render('BlogBundle:Page:index.html.twig', array(
-            'blogs' => $blogs
-        ));
+                    'blogs' => $blogs
+                ));
     }
 
-    
-    
-    public function showAction($id) {
+    public function showAction($id, $slug) {
 
         $em = $this->getDoctrine()->getEntityManager();
 
@@ -43,14 +41,11 @@ class PageController extends Controller {
                     'comments' => $comments
                 ));
     }
-    
-    
+
     public function aboutAction() {
         return $this->render('BlogBundle:Page:about.html.twig');
     }
 
-    
-    
     public function contactAction() {
         $contact = new Contact();
         $form = $this->createForm(new ContactType(), $contact);
@@ -78,6 +73,28 @@ class PageController extends Controller {
 
         return $this->render('BlogBundle:Page:contact.html.twig', array(
                     'form' => $form->createView()
+                ));
+    }
+
+    public function sidebarAction() {
+        $em = $this->getDoctrine()
+                ->getEntityManager();
+
+        $tags = $em->getRepository('BlogBundle:Blog')
+                ->getTags();
+
+        $tagWeights = $em->getRepository('BlogBundle:Blog')
+                ->getTagWeights($tags);
+
+        $commentLimit = $this->container
+                ->getParameter('blog.comments.latest_comment_limit');
+
+        $latestComments = $em->getRepository('BlogBundle:Comment')
+                ->getLatestComments($commentLimit);
+
+        return $this->render('BlogBundle:Page:sidebar.html.twig', array(
+                    'tags' => $tagWeights,
+                    'latestComments' => $latestComments
                 ));
     }
 
