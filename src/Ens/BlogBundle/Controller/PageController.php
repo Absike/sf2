@@ -12,10 +12,31 @@ class PageController extends Controller {
         return $this->render('BlogBundle:Page:index.html.twig');
     }
 
+    
+    
+    public function showAction($id) {
+
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $blog = $em->getRepository('BlogBundle:Blog')->find($id);
+
+
+        if (!$blog) {
+            throw $this->createNotFoundException('Unable to find Blog post.');
+        }
+
+        return $this->render('BlogBundle:Page:show.html.twig', array(
+                    'blog' => $blog,
+                ));
+    }
+    
+    
     public function aboutAction() {
         return $this->render('BlogBundle:Page:about.html.twig');
     }
 
+    
+    
     public function contactAction() {
         $contact = new Contact();
         $form = $this->createForm(new ContactType(), $contact);

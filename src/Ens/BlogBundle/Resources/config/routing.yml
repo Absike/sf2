@@ -17,4 +17,12 @@ BlogBundle_contact:
     pattern:  /contact
     defaults: { _controller: BlogBundle:Page:contact }
     requirements:
-        _method:  GET|POST       
+        _method:  GET|POST     
+        
+        
+BlogBundle_show:
+    pattern:  /{id}
+    defaults: { _controller: BlogBundle:Page:show }
+    requirements:
+        _method:  GET
+        id: \d+ 
